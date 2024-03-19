@@ -10,3 +10,6 @@ Created by Jackie Smolkin-Lerner
 4. Run `python main.py`
 5. Follow the prompts
 6. Have fun?
+
+# Demo Video
+[https://youtu.be/MIuZWTasVNs]
