@@ -12,4 +12,4 @@ Created by Jackie Smolkin-Lerner
 6. Have fun?
 
 # Demo Video
-[https://youtu.be/MIuZWTasVNs]
+https://youtu.be/MIuZWTasVNs
