@@ -1,6 +1,11 @@
 import psycopg
 from datetime import date
 
+# NOTE: Update these values to your own Postgres login
+DATABASE: str = "A3-Q1"
+USERNAME: str = "postgres"
+PASSWORD: str = "postgres"
+
 
 '''
 Retrieves and displays all records from the students table.
@@ -71,17 +76,23 @@ def delete_student(conn, cursor):
     except Exception as e:
         print("failed to delete student: " + str(e))
 
-def main():
-    with psycopg.connect("dbname=A3-Q1 user=postgres password=postgres") as conn:
+'''
+Print the different commands
+'''
+def print_options():
         print("""
-        Welcome! What would you like to do?
-
-            1. Get all students
-            2. Add a new student
-            3. Update the email of a student
-            4. Delete a student
-            "exit" to quit.
+What would you like to do?
+    1. Get all students
+    2. Add a new student
+    3. Update the email of a student
+    4. Delete a student
+    "exit" to quit.
               """)
+
+def main():
+    with psycopg.connect(f"dbname={DATABASE} user={USERNAME} password={PASSWORD}") as conn:
+        print("Welcome!")
+        print_options()
 
         with conn.cursor() as cursor:
             while True:
@@ -93,6 +104,10 @@ def main():
                     case '3': update_student_email(conn, cursor)
                     case '4': delete_student(conn, cursor)
                     case 'exit' | 'quit' | 'q' : break 
+                    case _: 
+                        print("Invalid command")
+
+                print_options()
 
         print("Disconnecting... Have a nice day! 😊")
 
